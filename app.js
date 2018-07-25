@@ -6,7 +6,7 @@ import _ from 'lodash';
 import bodyParser from 'body-parser';
 import path from 'path';
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const basePath = (version, path) => `/api/${version}/${path}`;
 const getUrl = basePath('v1', 'students')
@@ -32,6 +32,6 @@ server.get('/router-handler', (req, res, next) => {
     console.log('Second Handler')
 })
 
-server.listen('3000', () => {
+server.listen(PORT, () => {
     console.log(`App started on port ${PORT}`)
 })
